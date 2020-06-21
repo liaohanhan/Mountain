@@ -13,7 +13,8 @@ body {
 #mySidenav{
   background-color: #84D2C5;
 }
-#pass {
+
+#pass,#editsetting {
   border-radius: 5rem;
   float: right;
 }
