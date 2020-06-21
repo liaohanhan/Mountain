@@ -15,7 +15,7 @@ body {
   height: 30rem;
   
 }
-#pass {
+#pass,#editsetting {
   border-radius: 5rem;
   float: right;
 }
