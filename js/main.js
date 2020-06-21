@@ -1,8 +1,10 @@
+firebase.initializeApp({databaseURL:"https://test-b7807.firebaseio.com/"})
+const database = firebase.database
 $(document).ready(function() {
   var email;
   var password;
   var loginUser;
-
+ 
   function isLogin() {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
