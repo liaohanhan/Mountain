@@ -319,6 +319,10 @@ $(document).ready(function() {
         .updatePassword(newpassword)
         .then(function() {
           console.log("Update successful.");
+          alert("密碼更新成功！")
+          document.getElementById("newpassword").value="";
+          document.getElementById("newpassword2").value="";
+          
         })
         .catch(function(error) {
           console.log(error);
