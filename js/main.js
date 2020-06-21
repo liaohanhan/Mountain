@@ -261,7 +261,7 @@ $(document).ready(function() {
       .child("name")
       .once("value")
       .then(function(snapshot) {
-        $("#id").html("歡迎！" + snapshot.val());
+        $("#id").html("你好！" + snapshot.val()+"！");
       });
   }
   //取得頭貼
