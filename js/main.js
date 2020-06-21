@@ -1,13 +1,19 @@
+firebase.initializeApp({
+  apiKey: "AIzaSyAPtrxO1ce1sWtp0hoOQA6_h15jrALCnTk",
+  authDomain: "Test",
+  databaseURL: "https://test-b7807.firebaseio.com/"
+});
+const database = firebase.database();
 $(document).ready(function() {
   var email;
   var password;
   var loginUser;
-
+ 
   function isLogin() {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log("User is logined", user.uid);
-        window.location.href = "./html/progress.html"; //登入時改跳轉頁面
+        window.location.href = "../html/progress.html"; //登入時改跳轉頁面
       } else {
         console.log("User is not logined yet.");
       }
