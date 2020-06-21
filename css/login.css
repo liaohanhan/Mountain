@@ -13,6 +13,9 @@ body {
   background-size: cover;
   font-family: "Noto Sans TC", sans-serif;
 }
+#title{
+    color: #505050;
+}
 .form-register,
 .form-signin {
   width: 100%;
@@ -44,6 +47,12 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.signup,.plogin{
+    color: #0F816F;
+}
+.signup,.plogin:hover{
+    color:#33BCBE;
+    }
 .card {
   border-radius: 1rem;
   padding: 2rem;
@@ -68,6 +77,12 @@ body {
 }
 #register {
   border-radius: 5rem;
+}
+button{
+    background: -webkit-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: -o-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: -moz-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: linear-gradient(90deg,#0F816F,#33BCBE);
 }
 @media screen and (max-height: 450px) {
   body {
