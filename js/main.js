@@ -1,3 +1,10 @@
+firebase.initializeApp({
+  apiKey: "AIzaSyAPtrxO1ce1sWtp0hoOQA6_h15jrALCnTk",
+  authDomain: "Test",
+  databaseURL: "https://test-b7807.firebaseio.com/"
+});
+
+const database = firebase.database();
 $(document).ready(function() {
   var email;
   var password;
