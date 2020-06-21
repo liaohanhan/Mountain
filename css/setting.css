@@ -1,5 +1,19 @@
+body {
+  display: flex;
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url(../img/BGinside.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.row{
+  background-color: #ffffff;
+}
 .change {
   height: 30rem;
+  
 }
 #pass {
   border-radius: 5rem;
