@@ -3,7 +3,6 @@ firebase.initializeApp({
   authDomain: "Test",
   databaseURL: "https://test-b7807.firebaseio.com/"
 });
-
 const database = firebase.database();
 $(document).ready(function() {
   var email;
