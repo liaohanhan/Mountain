@@ -17,7 +17,6 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
    crossorigin="anonymous"></script>
-
   <!-- 引入 firebase 函式庫 -->
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
@@ -34,12 +33,12 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-lg-10">
         <div class="card card-sign">
-
           <form class="form-signin front">
-            <h1 class="h3   display-5 text-center mb-5">歡迎來到Mountain</h1>
+            <h1 class="h3   display-5 mb-5">歡迎來到Mountain</h1>
+            <p class="display-5 mb-2">登入你的帳號</p>
             <div class="form-label-group   mb-5">
               <input type="email" id="mail" class="form-control front" placeholder="電子郵件" required="required"
                 autofocus="">
@@ -59,8 +58,8 @@
               <input type="email" id="rmail" class="form-control mb-3" placeholder="電子郵件" required="required"
                 autofocus="">
               <input type="password" id="rpassword" class="form-control mb-3" placeholder="密碼" required="required">
-              <input type="text" id="studentId" class="form-control mb-3" placeholder="學號" required="required">
-              <input type="text" id="name" class="form-control mb-3" placeholder="名字" required="required">
+              <input type="text" id="studentId" class="form-control mb-3" placeholder="姓名" required="required">
+              <input type="text" id="name" class="form-control mb-3" placeholder="電話" required="required">
               <p class='rmessage' whiteSpace='pre-wrap'></p>
             </div>
             <button type="button" id="register" class="btn btn-lg text-light bg-dark btn-inverse btn-block">Login</button>
