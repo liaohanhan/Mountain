@@ -84,8 +84,8 @@ $(document).ready(function() {
           .ref("users/" + loginUser.uid)
           .set({
             email: loginUser.email,
-            studentId: $("#studentId").val(),
-            name: $("#name").val()
+            name: $("#name").val(),
+            phonenum: $("#phonenum").val()
           })
           .then(function() {
             window.location.href = "../html/progress.html";
@@ -141,11 +141,11 @@ $(document).ready(function() {
         .css("color", "red");
     }
   });
-  $("#studentId").on("keyup", function() {
+  $("#phonenum").on("keyup", function() {
     var r = /^[0-9]*[1-9][0-9]*$/;
-    if (!r.test($("#studentId").val()) || $("#studentId").val().length < 9) {
+    if (!r.test($("#phonenum").val()) || $("#phonenum").val().length < 9) {
       $(".rmessage")
-        .html("請輸入正確學號!")
+        .html("請輸入正確的電話號碼!")
         .css("color", "red");
       document.getElementById("register").setAttribute("disabled", "true");
     } else {
