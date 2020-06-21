@@ -88,7 +88,7 @@ $(document).ready(function() {
             name: $("#name").val()
           })
           .then(function() {
-            window.location.href = "./html/progress.html";
+            window.location.href = "../html/progress.html";
           });
       
            firebase
