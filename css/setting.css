@@ -1,20 +1,19 @@
 body {
-  display: flex;
-  align-items: center;
-  background-attachment: fixed;
   background-image: url(../img/BGinside.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Noto Sans TC", sans-serif;
 }
-.row{
-  background-color: #ffffff;
-}
+
 .change {
   height: 30rem;
   
 }
+#mySidenav{
+  background-color: #84D2C5;
+}
+
 #pass,#editsetting {
   border-radius: 5rem;
   float: right;
@@ -29,11 +28,27 @@ body {
 .hide{
   display: none;
 }
+.navpic{
+  justify-content: center;
+}
+.navbartext{
+  color: #fff;
+}
+.navbartext:hover{
+  color:#0F816F;
+}
 .vertical-center {
   min-height: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
+}
+.mountain{
+  width: 100%;
+}
+.container{
+  background-color: #fff;
+   border-radius: 2em;
 }
 #file {
   margin-top: -4rem;
@@ -41,6 +56,9 @@ body {
 }
 #confirm {
   border-radius: 5rem;
+}
+#editsetting,#pass{
+  margin-bottom:3em;
 }
 @media screen and (max-width: 1024px) {
   #file {

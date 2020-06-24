@@ -66,7 +66,7 @@ $(document).ready(function() {
     isLogin();
   });
 
-  //---------------註冊帳號---------------------------
+//---------------註冊帳號---------------------------
   $("#register").click(function() {
     email = document.getElementById("rmail").value;
     password = document.getElementById("rpassword").value;
@@ -119,13 +119,13 @@ $(document).ready(function() {
     $(".front").css("display", "none");
     $(".back").css("display", "");
     $(".card").css("transform", "rotateY(180deg)");
-    $(".card").css("height", "37rem");
+    $(".card").css("height", "100%");
   });
   $("#plogin").click(function() {
     $(".front").css("display", "");
     $(".back").css("display", "none");
     $(".card").css("transform", "rotateY(0deg)");
-    $(".card").css("height", "25rem");
+    $(".card").css("height", "100%");
   });
 
   $("#rpassword").on("keyup", function() {
@@ -261,7 +261,7 @@ $(document).ready(function() {
       .child("name")
       .once("value")
       .then(function(snapshot) {
-        $("#id").html("歡迎！" + snapshot.val());
+        $("#id").html("你好！" + snapshot.val()+"！");
       });
   }
   //取得頭貼
@@ -333,7 +333,7 @@ database.ref(nameref).update("萱萱")
       isSame = false;
     } else if ($("#newpassword").val() != $("#newpassword2").val()) {
       $(".message")
-        .html("密碼不一樣!")
+        .html("密碼不相同!")
         .css("color", "red");
       document.getElementById("pass").setAttribute("disabled", "true");
       isSame = false;

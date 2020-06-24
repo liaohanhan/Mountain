@@ -51,15 +51,14 @@
       </a>
       <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
       <a><span id="id" class="idtext"></span></a>
-
-      <a href="./comment.html">課程公告</a>
-      <a href="./progress.html">專案進度</a>
-      <a href="./projectgoal.html">編輯專案</a>
-      <a href="./all-team.html">班級所有團隊</a>
-      <a href="./chat.html">討論區</a>
-      <a href="../html/setting.html">設定</a>
+      <a href="index.html" ><img src="../img/Logo.png" width="80%" class="navpic"></a>
+      <a href="./comment.html" class="navbartext">開團總覽</a>
+      <a href="./progress.html" class="navbartext">我要開團</a>
+      <a href="./projectgoal.html"  class="navbartext">團於山</a>
+      <a href="./all-team.html"  class="navbartext">裝備介紹</a>
+      <a href="../html/setting.html"  class="navbartext">設定</a>
       <a href="../html/index.html" id="logout"
-        ><img id="imgLogout" src="../img/logoico.ico"
+        ><img id="imgLogout" src="../img/logout.png"
       /></a>
     </div>
 
@@ -72,10 +71,13 @@
     <div id="main" class="vertical-center">
       <div class="container shadow-lg mt-5">
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="change container  pl-5 pr-5 pb-5">
               <div>
-                <div class="form-group mb-5">
+                <div class="pt-5">
+                  <h2>個人資料</h2>
+                </div>
+                <div class="form-group mt-5">
                   <label for="newname">姓名</label>
                   <input
                     
@@ -84,7 +86,7 @@
                     disabled
                     />
                 </div>
-                <div class="form-group mb-5">
+                <div class="form-group ">
                   <label for="newphonenum">電話</label>
                   <input
                     class="form-control show"
@@ -92,15 +94,8 @@
                     disabled
                   />
                 </div>
-                <!--<div class="form-group mb-5">
-                  <label for="oldpassword">密碼</label>
-                  <input
-                    class="form-control show"
-                    id="oldpassword"
-                    disabled
-                  />
-                </div>!-->
-                <div class="form-group  mt-5">
+        
+                <div class="form-group  ">
                   <label for="newpassword" class="hide">新密碼</label>
                   <input
                     type="password"
@@ -118,19 +113,17 @@
                     placeholder="Password"
                   />
                 </div>
+                
                 <span class="message"></span>
-                <button id="editsetting"  class="btn btn-primary">
+                <button id="editsetting"  class="btn btn-primary ">
                   修改
                 </button>
                 <button id="pass" type="submit" class="btn btn-primary hide" >
                   確認更改
                 </button>
+              
               </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 p-5">
-           <img src="../img/Logo.png">
-            
           </div>
         </div>
       </div>
