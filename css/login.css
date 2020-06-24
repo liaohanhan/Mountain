@@ -84,6 +84,9 @@ button{
     background: -moz-linear-gradient(90deg,#0F816F,#33BCBE);
     background: linear-gradient(90deg,#0F816F,#33BCBE);
 }
+button:hover{
+  opacity:0.7;
+}
 @media screen and (max-height: 450px) {
   body {
     padding-top: 20rem;
