@@ -158,7 +158,7 @@ $(document).ready(function() {
   //-----------------------------------------------------------------------------------
 
   //---------------------------------增加更新進度---------------------------------
-  var uidd = 0;
+ /* var uidd = 0;
   var zz;
   $("#submit").click(function() {
     const time = document.getElementById("time").value;
@@ -210,28 +210,28 @@ $(document).ready(function() {
       .catch(function(error) {
         alert("失敗" + error);
       });
-  });
+  });*/
   //-------------------------------------------------------------------
 
   //----------------如果網頁第一次要載入值 寫在這裡----------------------
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
+     // if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
       console.log("in refresh");
-      all_team();
+      //all_team();
       console.log("after allteeam");
       getId();
-      getPhoto();
-      chat();
-      
-      getprojectgoal();
-      getcontent();
+     // getPhoto();
+     // chat();
+      settingrender()
+     // getprojectgoal();
+     // getcontent();
       checkID();
     }
   });
 
   //按下progress頁面更新資料
-  function refreshProgress() {
+ /* function refreshProgress() {
     var loginUser = firebase.auth().currentUser;
     var progressRef = firebase.database().ref("users/" + loginUser.uid);
     progressRef
@@ -251,7 +251,7 @@ $(document).ready(function() {
           console.log(childSnapshot.val());
         });
       });
-  }
+  }*/
 
   //取得學號
   function getId() {
@@ -265,7 +265,7 @@ $(document).ready(function() {
       });
   }
   //取得頭貼
-  function getPhoto() {
+ /* function getPhoto() {
     var loginUser = firebase.auth().currentUser;
     var storageRef = firebase.storage().ref("users/" + loginUser.uid);
     var pathReference = storageRef.child("image");
@@ -285,11 +285,45 @@ $(document).ready(function() {
         document.getElementById("upload_img").style.cssText =
           "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
       });
-  }
+  }*/
   //----------------------------------------------------------------------
 
   //-----------------------更新密碼頁面--------------------------------------
+  function settingrender(){
+  loginUser = firebase.auth().currentUser;
+  var userdata = firebase.database().ref("users/" + loginUser.uid);
+
+  userdata
+      .child("name")
+      .once("value")
+      .then(function(snapshot){
+        $("#newname").val(snapshot.val())
+       
+      }) 
+  userdata
+      .child("phonenum")
+      .once("value")
+      .then(function(snapshot){
+        $("#newphonenum").val(snapshot.val())
+       
+      }) 
+     
+    
+    $("#editsetting").on("click",function(){
+      resetprofile()
+    $("#editsetting").addClass("hide")
+    $("#pass").removeClass("hide")
+    
+    })}
+  function resetprofile(){
+  var nameref="users/" + firebase.auth().currentUser.uid +"name"
+  var phonenumref=""
   var isSame = false;
+  $("#newname,#newphonenum").removeAttr("disabled")
+  $("#newpassword, #newpassword2,label").removeClass("hide")
+database.ref(nameref).update("萱萱")
+
+
   $("#newpassword, #newpassword2").on("keyup", function() {
     if ($("#newpassword").val().length < 6) {
       $(".message")
@@ -311,18 +345,25 @@ $(document).ready(function() {
       isSame = true;
     }
   });
+  if (($("#newpassword").val()).trim()!="" ){
+    restpassword()
+  }
+  
+}
+function restpassword(){
   $("#pass").click(function() {
+    
     if (isSame) {
       var user = firebase.auth().currentUser;
       var newpassword = document.getElementById("newpassword").value;
+
       user
         .updatePassword(newpassword)
         .then(function() {
           console.log("Update successful.");
-          alert("密碼更新成功！")
+          alert("更新成功！")
           document.getElementById("newpassword").value="";
           document.getElementById("newpassword2").value="";
-          
         })
         .catch(function(error) {
           console.log(error);
@@ -330,8 +371,7 @@ $(document).ready(function() {
         });
     }
   });
-  
-  
+}
    $("#modifyproject").click(function() {
    
   var nameElement = document.getElementById("projectName");
@@ -500,7 +540,7 @@ $("#clearproject").click(function() {
         gitElement.value = data;
       });
   }
-  function getcontent() {
+ /* function getcontent() {
     firebase
       .database()
       .ref("COMMENT/comment")
@@ -520,10 +560,10 @@ $("#clearproject").click(function() {
           
         teacher_commentElement.value = data;
       });
-  }
+  }*/
 
   function checkID() {
-    const adminUID = "ckhZgIhh7RUPKWaRtSx4k3okia02";
+    const adminUID = "IfPBdDg800QTIQHDdyP1yOsgMrv2";
     firebase.auth().onAuthStateChanged(function(user) {
       if (adminUID != firebase.auth().currentUser.uid) {
         $("#a").addClass("comment_btdisplay");
@@ -756,7 +796,10 @@ $("#clearproject").click(function() {
             // })
             // .catch(function(error) {});
           })
-          .catch(function(error) {});
+          .catch(function(error) {
+            alert(error)
+            console.log(error)
+          });
       });
   }
 });

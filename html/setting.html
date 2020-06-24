@@ -78,33 +78,42 @@
                 <div class="form-group mb-5">
                   <label for="newname">姓名</label>
                   <input
-                    type="password"
-                    class="form-control"
+                    
+                    class="form-control show"
                     id="newname"
-                  />
+                    disabled
+                    />
                 </div>
                 <div class="form-group mb-5">
                   <label for="newphonenum">電話</label>
                   <input
-                    type="password"
-                    class="form-control"
+                    class="form-control show"
                     id="newphonenum"
+                    disabled
                   />
                 </div>
+                <!--<div class="form-group mb-5">
+                  <label for="oldpassword">密碼</label>
+                  <input
+                    class="form-control show"
+                    id="oldpassword"
+                    disabled
+                  />
+                </div>!-->
                 <div class="form-group  mt-5">
-                  <label for="newpassword">新密碼</label>
+                  <label for="newpassword" class="hide">新密碼</label>
                   <input
                     type="password"
-                    class="form-control"
+                    class="form-control hide"
                     id="newpassword"
                     placeholder="Password"
                   />
                 </div>
-                <div class="form-group mb-5">
-                  <label for="newpassword2">再次輸入密碼</label>
+                <div class="form-group mb-5 ">
+                  <label for="newpassword2" class="hide">再次輸入密碼</label>
                   <input
                     type="password"
-                    class="form-control"
+                    class="form-control hide"
                     id="newpassword2"
                     placeholder="Password"
                   />
@@ -113,7 +122,7 @@
                 <button id="editsetting"  class="btn btn-primary">
                   修改
                 </button>
-                <button id="pass" type="submit" class="btn btn-primary">
+                <button id="pass" type="submit" class="btn btn-primary hide" >
                   確認更改
                 </button>
               </div>
