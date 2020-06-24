@@ -66,7 +66,7 @@ $(document).ready(function() {
     isLogin();
   });
 
-  //---------------註冊帳號---------------------------
+//---------------註冊帳號---------------------------
   $("#register").click(function() {
     email = document.getElementById("rmail").value;
     password = document.getElementById("rpassword").value;
@@ -119,13 +119,13 @@ $(document).ready(function() {
     $(".front").css("display", "none");
     $(".back").css("display", "");
     $(".card").css("transform", "rotateY(180deg)");
-    $(".card").css("height", "37rem");
+    $(".card").css("height", "100%");
   });
   $("#plogin").click(function() {
     $(".front").css("display", "");
     $(".back").css("display", "none");
     $(".card").css("transform", "rotateY(0deg)");
-    $(".card").css("height", "25rem");
+    $(".card").css("height", "100%");
   });
 
   $("#rpassword").on("keyup", function() {
@@ -264,28 +264,7 @@ $(document).ready(function() {
         $("#id").html("你好！" + snapshot.val()+"！");
       });
   }
-  //取得頭貼
-  function getPhoto() {
-    var loginUser = firebase.auth().currentUser;
-    var storageRef = firebase.storage().ref("users/" + loginUser.uid);
-    var pathReference = storageRef.child("image");
-    pathReference
-      .getDownloadURL()
-      .then(function(url) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url( " + url + ");";
-        if (location.pathname == "/webfinal/html/setting.html")
-          document.getElementById("upload_img").style.cssText =
-            "background-image:url( " + url + ");";
-      })
-      .catch(function(error) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
 
-        document.getElementById("upload_img").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
-      });
-  }
   //----------------------------------------------------------------------
 
   //-----------------------更新密碼頁面--------------------------------------
@@ -299,7 +278,7 @@ $(document).ready(function() {
       isSame = false;
     } else if ($("#newpassword").val() != $("#newpassword2").val()) {
       $(".message")
-        .html("密碼不一樣!")
+        .html("密碼不相同!")
         .css("color", "red");
       document.getElementById("pass").setAttribute("disabled", "true");
       isSame = false;
