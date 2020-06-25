@@ -5,10 +5,12 @@ body {
   background-size: cover;
   font-family: "Noto Sans TC", sans-serif;
 }
-
+h2{
+  text-align: center;
+  
+}
 .change {
   height: 30rem;
-  
 }
 #mySidenav{
   background-color: #84D2C5;
@@ -48,7 +50,7 @@ body {
 }
 .container{
   background-color: #fff;
-   border-radius: 2em;
+  border-radius: 1em;
 }
 button{
   color: #fff;
