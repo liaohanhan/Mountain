@@ -87,8 +87,9 @@ resetweb()
             name: $("#name").val(),
             phonenum: $("#phonenum").val()
           })
-          .then(function () {
-            window.location.href = "../html/progress.html";
+          .then(function() {
+            alert("註冊成功！");
+            window.location.href = "../html/actionall.html";
           });
 
         firebase
