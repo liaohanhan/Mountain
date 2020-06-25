@@ -5,8 +5,19 @@ body {
     background-size: cover;
     font-family: "Noto Sans TC", sans-serif;
 }
-
-.rwd-table {
+.vertical-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+h2{
+    text-align: center;
+  }
+.container{
+    background-color: #fff;
+    border-radius: 1rem;
+}
+/* .rwd-table {
     background: #fff;
     overflow: hidden;
     word-wrap: break-word;
@@ -50,10 +61,10 @@ body {
 .rwd-table th {
     color: #0F816F;
     font-weight: 500
-}
+} */
 
 @media (min-width:480px) {
-    .rwd-table td:before {
+    /* .rwd-table td:before {
         display: none
     }
 
@@ -76,11 +87,11 @@ body {
     .rwd-table td,
     .rwd-table th {
         padding: 1em !important
-    }
+    } */
 }
 
 @media (max-width:479px) {
-
+/* 
     .rwd-table td:last-child,
     .rwd-table th:last-child {
         margin-bottom: 1rem
@@ -112,7 +123,7 @@ body {
 
 .table td {
     vertical-align: middle
-}
+} */
 
 #add {
     position: fixed;
@@ -129,7 +140,7 @@ body {
 .btn {
     border-radius: 5rem
 }
-
+}
 @media screen and (max-width:1024px) {
     #add {
         visibility: hidden
