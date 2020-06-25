@@ -92,16 +92,7 @@ resetweb()
             window.location.href = "../html/actionall.html";
           });
 
-        firebase
-          .database()
-          .ref("users/" + loginUser.uid + "/projectgoal")
-          .set({
-            arefVideo: "",
-            class: "",
-            git: "",
-            projectName: "",
-            comment: ""
-          });
+       
       })
       .catch(function (error) {
         console.error("寫入使用者資訊錯誤", error);
@@ -309,46 +300,69 @@ resetweb()
       }
     
   }
+  $("#connectphonenum").on("keyup", function () {
+    var r = /^[0-9]*[1-9][0-9]*$/;
+    if (!r.test($("#connectphonenum").val()) || $("#connectphonenum").val().length < 9) {
+      $(".rmessage")
+        .html("請輸入正確的電話號碼!")
+        .css("color", "red");
+      document.getElementById("modifyproject").setAttribute("disabled", "true");
+    } else {
+      document.getElementById("modifyproject").removeAttribute("disabled");
+      $(".rmessage")
+        .html("\n")
+        .css("color", "red");
+    }
+  });
+  $("#class").on("keyup", function () {
+    var r = /^[0-9]*[1-9][0-9]*$/;
+    if (!r.test($("#class").val()) ) {
+      $(".rmessage")
+        .html("請輸入正確的人數!")
+        .css("color", "red");
+      document.getElementById("modifyproject").setAttribute("disabled", "true");
+    } else {
+      document.getElementById("modifyproject").removeAttribute("disabled");
+      $(".rmessage")
+        .html("\n")
+        .css("color", "red");
+    }
+  });
   $("#modifyproject").click(function () {
 
     var nameElement = document.getElementById("projectName");
     var name = nameElement.value;
-    var arefElement = document.getElementById("arefVideo");
-    var aref = arefElement.value;
     var classElement = document.getElementById("class");
     var cls = classElement.value;
-    var commentElement = document.getElementById("comment");
-    var comment = commentElement.value;
-    var gitElement = document.getElementById("gitaref");
-    var git = gitElement.value;
+    var tripElement = document.getElementById("trip");
+    var trip = tripElement.value;
+    var connectElement = document.getElementById("connectphonenum");
+    var connectphonenum = connectElement.value;
     firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
       .set({
         projectName: name,
-        arefVideo: aref,
-        class: cls,
-        comment: comment,
-        git: git
+        peoplenum: cls,
+        trip: trip,
+        connectphonenum: connectphonenum
       });
-    alert("已儲存");
+    alert("開團成功");
   });
   $("#clearproject").click(function () {
     var nameElement = document.getElementById("projectName");
     nameElement.value = "";
-    var arefElement = document.getElementById("arefVideo");
-    arefElement.value = "";
     var classElement = document.getElementById("class");
     classElement.value = "";
-    var commentElement = document.getElementById("comment");
-    commentElement.value = "";
-    var gitElement = document.getElementById("gitaref");
-    gitElement.value = "";
-    firebase
+    var tripElement = document.getElementById("trip");
+    tripElement.value = "";
+    var connectphonenumElement = document.getElementById("connectphonenum");
+    connectphonenumElement.value = "";
+   /* firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
       .remove();
-    alert("已清除");
+    alert("已清除");*/
   });
   $("#a").click(function () {
 
