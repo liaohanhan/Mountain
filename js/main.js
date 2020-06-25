@@ -4,13 +4,13 @@ firebase.initializeApp({
   databaseURL: "https://test-b7807.firebaseio.com/"
 });
 const database = firebase.database();
-$(document).ready(function() {
+$(document).ready(function () {
   var email;
   var password;
   var loginUser;
- 
+resetweb()
   function isLogin() {
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log("User is logined", user.uid);
         window.location.href = "../html/progress.html"; //登入時改跳轉頁面
@@ -21,13 +21,13 @@ $(document).ready(function() {
   }
 
   //登入
-  $("#login").click(function() {
+  $("#login").click(function () {
     email = document.getElementById("mail").value;
     password = document.getElementById("password").value;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .catch(function(error) {
+      .catch(function (error) {
         var errorMessage = error.message;
         console.log(errorMessage);
         if (
@@ -35,50 +35,50 @@ $(document).ready(function() {
           "There is no user record corresponding to this identifier. The user may have been deleted."
         )
           $(".lmessage")
-            .html("此帳號不存在")
-            .css("color", "red");
+          .html("此帳號不存在")
+          .css("color", "red");
         else if (
           errorMessage ==
           "The password is invalid or the user does not have a password."
         )
           $(".lmessage")
-            .html("密碼錯誤")
-            .css("color", "red");
+          .html("密碼錯誤")
+          .css("color", "red");
       });
 
     isLogin();
   });
 
   //登出
-  $("#logout").click(function() {
+  $("#logout").click(function () {
     firebase
       .auth()
       .signOut()
       .then(
-        function() {
+        function () {
           console.log("User sign out!");
           window.location.href = "../html/index.html";
         },
-        function(error) {
+        function (error) {
           console.log("User sign out error!");
         }
       );
     isLogin();
   });
 
-//---------------註冊帳號---------------------------
-  $("#register").click(function() {
+  //---------------註冊帳號---------------------------
+  $("#register").click(function () {
     email = document.getElementById("rmail").value;
     password = document.getElementById("rpassword").value;
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(function() {
+      .then(function () {
         //登入成功後，取得登入使用者資訊
         loginUser = firebase.auth().currentUser;
         console.log("登入使用者為", loginUser.email);
         uid = loginUser.uid;
-   
+
         firebase
           .database()
           .ref("users/" + loginUser.uid)
@@ -87,11 +87,11 @@ $(document).ready(function() {
             name: $("#name").val(),
             phonenum: $("#phonenum").val()
           })
-          .then(function() {
+          .then(function () {
             window.location.href = "../html/progress.html";
           });
-      
-           firebase
+
+        firebase
           .database()
           .ref("users/" + loginUser.uid + "/projectgoal")
           .set({
@@ -102,33 +102,33 @@ $(document).ready(function() {
             comment: ""
           });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("寫入使用者資訊錯誤", error);
         if (
           error.message ==
           "The email address is already in use by another account."
         )
           $(".rmessage")
-            .html("電子郵件已被註冊")
-            .css("color", "red");
+          .html("電子郵件已被註冊")
+          .css("color", "red");
       });
   });
 
   $(".back").css("display", "none");
-  $("#singup").click(function() {
+  $("#singup").click(function () {
     $(".front").css("display", "none");
     $(".back").css("display", "");
     $(".card").css("transform", "rotateY(180deg)");
     $(".card").css("height", "100%");
   });
-  $("#plogin").click(function() {
+  $("#plogin").click(function () {
     $(".front").css("display", "");
     $(".back").css("display", "none");
     $(".card").css("transform", "rotateY(0deg)");
     $(".card").css("height", "100%");
   });
 
-  $("#rpassword").on("keyup", function() {
+  $("#rpassword").on("keyup", function () {
     if ($("#rpassword").val().length < 6) {
       $(".rmessage")
         .html("密碼長度要超過6個字元!")
@@ -141,7 +141,7 @@ $(document).ready(function() {
         .css("color", "red");
     }
   });
-  $("#phonenum").on("keyup", function() {
+  $("#phonenum").on("keyup", function () {
     var r = /^[0-9]*[1-9][0-9]*$/;
     if (!r.test($("#phonenum").val()) || $("#phonenum").val().length < 9) {
       $(".rmessage")
@@ -158,100 +158,101 @@ $(document).ready(function() {
   //-----------------------------------------------------------------------------------
 
   //---------------------------------增加更新進度---------------------------------
- /* var uidd = 0;
-  var zz;
-  $("#submit").click(function() {
-    const time = document.getElementById("time").value;
-    var youtube = document.getElementById("youtube").value;
-    const content = document.getElementById("content").value;
-    youtube = youtube.replace("watch?v=", "embed/");
-    //console.log("User is logined", user.uid)
-    loginUser = firebase.auth().currentUser;
-    var progressRef = firebase.database().ref("users/" + loginUser.uid);
-    zz = loginUser.uid;
-    progressRef
-      .child("progress")
-      .once("value")
-      .then(function(snapshot) {
-        var num = snapshot.numChildren();
-        //console.log("There are " + num + " in progress");
-        //console.log("progress資料", snapshot.val());
-        progressRef
-          .child("progress")
-          .child((0 + Number(num)).toString())
-          .set({ time: time, youtube: youtube, content: content })
-          .then(function() {
-            alert("成功!");
-            document.body.scrollTop = document.body.scrollHeight;
-            document.documentElement.scrollTop =
-              document.documentElement.scrollHeight;
-            console.log(firebase.auth().currentUser.uid);
-            $("table").append(
-              '<tr><td data-th="更新內容">' +
-                content +
-                '</td><td data-th="花費時間">' +
-                time +
-                '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
-                youtube +
-                ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen ></iframe></div></td></tr>'
-            );
+  /* var uidd = 0;
+   var zz;
+   $("#submit").click(function() {
+     const time = document.getElementById("time").value;
+     var youtube = document.getElementById("youtube").value;
+     const content = document.getElementById("content").value;
+     youtube = youtube.replace("watch?v=", "embed/");
+     //console.log("User is logined", user.uid)
+     loginUser = firebase.auth().currentUser;
+     var progressRef = firebase.database().ref("users/" + loginUser.uid);
+     zz = loginUser.uid;
+     progressRef
+       .child("progress")
+       .once("value")
+       .then(function(snapshot) {
+         var num = snapshot.numChildren();
+         //console.log("There are " + num + " in progress");
+         //console.log("progress資料", snapshot.val());
+         progressRef
+           .child("progress")
+           .child((0 + Number(num)).toString())
+           .set({ time: time, youtube: youtube, content: content })
+           .then(function() {
+             alert("成功!");
+             document.body.scrollTop = document.body.scrollHeight;
+             document.documentElement.scrollTop =
+               document.documentElement.scrollHeight;
+             console.log(firebase.auth().currentUser.uid);
+             $("table").append(
+               '<tr><td data-th="更新內容">' +
+                 content +
+                 '</td><td data-th="花費時間">' +
+                 time +
+                 '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
+                 youtube +
+                 ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen ></iframe></div></td></tr>'
+             );
 
-            var progress = firebase
-              .database()
-              .ref("users/" + zz + "/" + "progress/");
-            progress.on("child_added", function(data) {
-              console.log("目前所有使用者：", data.val());
-            });
-          })
-          .catch(function(error) {
-            alert("失敗" + error);
-          });
-      })
-      .catch(function(error) {
-        alert("失敗" + error);
-      });
-  });*/
+             var progress = firebase
+               .database()
+               .ref("users/" + zz + "/" + "progress/");
+             progress.on("child_added", function(data) {
+               console.log("目前所有使用者：", data.val());
+             });
+           })
+           .catch(function(error) {
+             alert("失敗" + error);
+           });
+       })
+       .catch(function(error) {
+         alert("失敗" + error);
+       });
+   });*/
   //-------------------------------------------------------------------
 
   //----------------如果網頁第一次要載入值 寫在這裡----------------------
-  firebase.auth().onAuthStateChanged(function(user) {
+  function resetweb(){
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-     // if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
+      // if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
       console.log("in refresh");
       //all_team();
       console.log("after allteeam");
       getId();
-     // getPhoto();
-     // chat();
+      // getPhoto();
+      // chat();
       settingrender()
-     // getprojectgoal();
-     // getcontent();
+      // getprojectgoal();
+      // getcontent();
       checkID();
     }
   });
-
+}
   //按下progress頁面更新資料
- /* function refreshProgress() {
-    var loginUser = firebase.auth().currentUser;
-    var progressRef = firebase.database().ref("users/" + loginUser.uid);
-    progressRef
-      .child("progress")
-      .once("value")
-      .then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          $("table").append(
-            '<tr><td data-th="更新內容">' +
-              childSnapshot.val().content +
-              '</td><td data-th="花費時間">' +
-              childSnapshot.val().time +
-              '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
-              childSnapshot.val().youtube +
-              ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></td></tr>'
-          );
-          console.log(childSnapshot.val());
-        });
-      });
-  }*/
+  /* function refreshProgress() {
+     var loginUser = firebase.auth().currentUser;
+     var progressRef = firebase.database().ref("users/" + loginUser.uid);
+     progressRef
+       .child("progress")
+       .once("value")
+       .then(function(snapshot) {
+         snapshot.forEach(function(childSnapshot) {
+           $("table").append(
+             '<tr><td data-th="更新內容">' +
+               childSnapshot.val().content +
+               '</td><td data-th="花費時間">' +
+               childSnapshot.val().time +
+               '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
+               childSnapshot.val().youtube +
+               ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></td></tr>'
+           );
+           console.log(childSnapshot.val());
+         });
+       });
+   }*/
 
   //取得學號
   function getId() {
@@ -260,161 +261,174 @@ $(document).ready(function() {
     progressRef
       .child("name")
       .once("value")
-      .then(function(snapshot) {
-        $("#id").html("你好！" + snapshot.val()+"！");
+      .then(function (snapshot) {
+        $("#id").html("你好！" + snapshot.val() + "！");
       });
   }
   //取得頭貼
- /* function getPhoto() {
-    var loginUser = firebase.auth().currentUser;
-    var storageRef = firebase.storage().ref("users/" + loginUser.uid);
-    var pathReference = storageRef.child("image");
-    pathReference
-      .getDownloadURL()
-      .then(function(url) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url( " + url + ");";
-        if (location.pathname == "/webfinal/html/setting.html")
-          document.getElementById("upload_img").style.cssText =
-            "background-image:url( " + url + ");";
-      })
-      .catch(function(error) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
+  /* function getPhoto() {
+     var loginUser = firebase.auth().currentUser;
+     var storageRef = firebase.storage().ref("users/" + loginUser.uid);
+     var pathReference = storageRef.child("image");
+     pathReference
+       .getDownloadURL()
+       .then(function(url) {
+         document.getElementById("photo").style.cssText =
+           "background-image:url( " + url + ");";
+         if (location.pathname == "/webfinal/html/setting.html")
+           document.getElementById("upload_img").style.cssText =
+             "background-image:url( " + url + ");";
+       })
+       .catch(function(error) {
+         document.getElementById("photo").style.cssText =
+           "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
 
-        document.getElementById("upload_img").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
-      });
-  }*/
+         document.getElementById("upload_img").style.cssText =
+           "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
+       });
+   }*/
   //----------------------------------------------------------------------
 
   //-----------------------更新密碼頁面--------------------------------------
-  function settingrender(){
-  loginUser = firebase.auth().currentUser;
-  var userdata = firebase.database().ref("users/" + loginUser.uid);
+  var isSame = false;
 
-  userdata
+  function settingrender() {
+    loginUser = firebase.auth().currentUser;
+    var userdata = firebase.database().ref("users/" + loginUser.uid);
+
+    userdata
       .child("name")
       .once("value")
-      .then(function(snapshot){
+      .then(function (snapshot) {
         $("#newname").val(snapshot.val())
-       
-      }) 
-  userdata
+
+      })
+    userdata
       .child("phonenum")
       .once("value")
-      .then(function(snapshot){
+      .then(function (snapshot) {
         $("#newphonenum").val(snapshot.val())
-       
-      }) 
-     
-    
-    $("#editsetting").on("click",function(){
+
+      })
+
+
+    $("#editsetting").on("click", function () {
       resetprofile()
-    $("#editsetting").addClass("hide")
-    $("#pass").removeClass("hide")
-    
-    })}
-  function resetprofile(){
-  var nameref="users/" + firebase.auth().currentUser.uid +"name"
-  var phonenumref=""
-  var isSame = false;
-  $("#newname,#newphonenum").removeAttr("disabled")
-  $("#newpassword, #newpassword2,label").removeClass("hide")
-database.ref(nameref).update("萱萱")
+      $("#editsetting").addClass("hide")
+      $("#pass").removeClass("hide")
 
-
-  $("#newpassword, #newpassword2").on("keyup", function() {
-    if ($("#newpassword").val().length < 6) {
-      $(".message")
-        .html("密碼長度要超過6個字元!")
-        .css("color", "red");
-      document.getElementById("pass").setAttribute("disabled", "true");
-      isSame = false;
-    } else if ($("#newpassword").val() != $("#newpassword2").val()) {
-      $(".message")
-        .html("密碼不相同!")
-        .css("color", "red");
-      document.getElementById("pass").setAttribute("disabled", "true");
-      isSame = false;
-    } else {
-      $(".message")
-        .html("")
-        .css("color", "red");
-      document.getElementById("pass").removeAttribute("disabled");
-      isSame = true;
-    }
-  });
-  if (($("#newpassword").val()).trim()!="" ){
-    restpassword()
+    })
   }
-  
-}
-function restpassword(){
-  $("#pass").click(function() {
-    
-    if (isSame) {
-      var user = firebase.auth().currentUser;
-      var newpassword = document.getElementById("newpassword").value;
 
-      user
-        .updatePassword(newpassword)
-        .then(function() {
-          console.log("Update successful.");
-          alert("更新成功！")
-          document.getElementById("newpassword").value="";
-          document.getElementById("newpassword2").value="";
-        })
-        .catch(function(error) {
-          console.log(error);
-          // An error happened.
-        });
-    }
-  });
-}
-   $("#modifyproject").click(function() {
-   
-  var nameElement = document.getElementById("projectName");
-  var name = nameElement.value;
-  var arefElement = document.getElementById("arefVideo");
-  var aref = arefElement.value;
-  var classElement = document.getElementById("class");
-  var cls = classElement.value;
-  var commentElement = document.getElementById("comment");
-  var comment = commentElement.value;
-  var gitElement = document.getElementById("gitaref");
-  var git = gitElement.value;
-  firebase
-    .database()
-    .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
-    .set({
-      projectName: name,
-      arefVideo: aref,
-      class: cls,
-      comment: comment,
-      git: git
+  function resetprofile() {
+ 
+    $("#newname,#newphonenum").removeAttr("disabled")
+    $("#newpassword, #newpassword2,label").removeClass("hide")
+
+
+    $("#newpassword, #newpassword2").on("keyup", function () {
+      if ($("#newpassword").val().length < 6) {
+        $(".message")
+          .html("密碼長度要超過6個字元!")
+          .css("color", "red");
+        document.getElementById("pass").setAttribute("disabled", "true");
+        isSame = false;
+      } else if ($("#newpassword").val() != $("#newpassword2").val()) {
+        $(".message")
+          .html("密碼不相同!")
+          .css("color", "red");
+        document.getElementById("pass").setAttribute("disabled", "true");
+        isSame = false;
+      } else {
+        $(".message")
+          .html("")
+          .css("color", "red");
+        document.getElementById("pass").removeAttribute("disabled");
+        isSame = true;
+      }
     });
+   
+
+  }
+  $("#pass").on("click",function(){
+    resetpassword()
+  })
+  function resetpassword() {
+   
+      if (($("#newpassword").val()).trim() != "") {
+        if (isSame) {
+          var user = firebase.auth().currentUser;
+          var newpassword = document.getElementById("newpassword").value;
+          var profile ={
+            name:$("#newname").val(),
+            phonenum:$("#newphonenum").val()
+          }
+          user
+            .updatePassword(newpassword)
+            .then(function () {
+              console.log("Update successful.");
+              database.ref("users/"+ firebase.auth().currentUser.uid ).update(profile)
+
+              alert("更新成功！")
+              resetweb()
+              document.getElementById("newpassword").value = "";
+              document.getElementById("newpassword2").value = "";
+              $("#editsetting").removeClass("hide")
+              $("#pass").addClass("hide")
+              $("#newname,#newphonenum").attr("disabled",true)
+              $("#newpassword, #newpassword2,#newpasswordlable1,#newpasswordlable2").addClass("hide")
+            })
+            .catch(function (error) {
+              console.log(error);
+              // An error happened.
+            });
+        }
+      }
+    
+  }
+  $("#modifyproject").click(function () {
+
+    var nameElement = document.getElementById("projectName");
+    var name = nameElement.value;
+    var arefElement = document.getElementById("arefVideo");
+    var aref = arefElement.value;
+    var classElement = document.getElementById("class");
+    var cls = classElement.value;
+    var commentElement = document.getElementById("comment");
+    var comment = commentElement.value;
+    var gitElement = document.getElementById("gitaref");
+    var git = gitElement.value;
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
+      .set({
+        projectName: name,
+        arefVideo: aref,
+        class: cls,
+        comment: comment,
+        git: git
+      });
     alert("已儲存");
   });
-$("#clearproject").click(function() {
-  var nameElement = document.getElementById("projectName");
-  nameElement.value = "";
-  var arefElement = document.getElementById("arefVideo");
-  arefElement.value = "";
-  var classElement = document.getElementById("class");
-  classElement.value = "";
-  var commentElement = document.getElementById("comment");
-  commentElement.value = "";
-  var gitElement = document.getElementById("gitaref");
-  gitElement.value = "";
-  firebase
-    .database()
-    .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
-    .remove();
-   alert("已清除");
+  $("#clearproject").click(function () {
+    var nameElement = document.getElementById("projectName");
+    nameElement.value = "";
+    var arefElement = document.getElementById("arefVideo");
+    arefElement.value = "";
+    var classElement = document.getElementById("class");
+    classElement.value = "";
+    var commentElement = document.getElementById("comment");
+    commentElement.value = "";
+    var gitElement = document.getElementById("gitaref");
+    gitElement.value = "";
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
+      .remove();
+    alert("已清除");
   });
-    $("#a").click(function() {
-      
+  $("#a").click(function () {
+
     var commentElement = document.getElementById("teacher_comment");
     var comment = commentElement.value;
     firebase
@@ -423,16 +437,16 @@ $("#clearproject").click(function() {
       .set({
         comment: comment
       });
-        alert("成功");
+    alert("成功");
   });
- $("#b").click(function() {
+  $("#b").click(function () {
     var commentElement = document.getElementById("teacher_comment");
     commentElement.value = "";
     firebase
       .database()
       .ref("/COMMENT")
       .remove();
-     alert("已刪除公告");
+    alert("已刪除公告");
   });
   //---------------------------------------------------------------------------
 
@@ -442,7 +456,7 @@ $("#clearproject").click(function() {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
 
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         document.getElementById("upload_img").style.cssText =
           "background-image:url( " + e.target.result + ");";
       };
@@ -451,47 +465,47 @@ $("#clearproject").click(function() {
     }
   }
   //上傳相片
-  var file;
-  var uploadFileInput = document.getElementById("upload");
-  uploadFileInput.addEventListener("change", function() {
-    readURL(this);
-    file = this.files[0];
-  });
-  $("#confirm").click(function() {
-    var loginUser = firebase.auth().currentUser;
-    var storageRef = firebase.storage().ref("users/" + loginUser.uid);
-    var uploadTask = storageRef.child("image").put(file);
-    uploadTask.on(
-      "state_changed",
-      function(snapshot) {
-        // 觀察狀態變化，例如：progress, pause, and resume
+  /*  var file;
+    var uploadFileInput = document.getElementById("upload");
+    uploadFileInput.addEventListener("change", function() {
+      readURL(this);
+      file = this.files[0];
+    });
+    $("#confirm").click(function() {
+      var loginUser = firebase.auth().currentUser;
+      var storageRef = firebase.storage().ref("users/" + loginUser.uid);
+      var uploadTask = storageRef.child("image").put(file);
+      uploadTask.on(
+        "state_changed",
+        function(snapshot) {
+          // 觀察狀態變化，例如：progress, pause, and resume
 
-        // 取得檔案上傳狀態，並用數字顯示
+          // 取得檔案上傳狀態，並用數字顯示
 
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log("Upload is paused");
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log("Upload is running");
-            break;
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log("Upload is paused");
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log("Upload is running");
+              break;
+          }
+        },
+        function(error) {
+          // Handle unsuccessful uploads
+        },
+        function() {
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            console.log("File available at", downloadURL);
+            document.getElementById("photo").style.cssText =
+              "background-image:url( " + downloadURL + ");";
+          });
         }
-      },
-      function(error) {
-        // Handle unsuccessful uploads
-      },
-      function() {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log("File available at", downloadURL);
-          document.getElementById("photo").style.cssText =
-            "background-image:url( " + downloadURL + ");";
-        });
-      }
-    );
-  });
-
+      );
+    });
+  */
   //------------張育瑞-------------//
   //取得專案目標
   function getprojectgoal() {
@@ -500,7 +514,7 @@ $("#clearproject").click(function() {
       .ref(
         "users/" + firebase.auth().currentUser.uid + "/projectgoal/projectName"
       )
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         var nameElement = document.getElementById("projectName");
         var data = snapshot.val();
         nameElement.value = data;
@@ -510,7 +524,7 @@ $("#clearproject").click(function() {
       .ref(
         "users/" + firebase.auth().currentUser.uid + "/projectgoal/arefVideo"
       )
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         var arefElement = document.getElementById("arefVideo");
         var data = snapshot.val();
         arefElement.value = data;
@@ -518,7 +532,7 @@ $("#clearproject").click(function() {
     firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal/class")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         var classElement = document.getElementById("class");
         var data = snapshot.val();
         classElement.value = data;
@@ -526,7 +540,7 @@ $("#clearproject").click(function() {
     firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal/comment")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         var commentElement = document.getElementById("comment");
         var data = snapshot.val();
         commentElement.value = data;
@@ -534,37 +548,37 @@ $("#clearproject").click(function() {
     firebase
       .database()
       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal/git")
-      .once("value", function(snapshot) {
+      .once("value", function (snapshot) {
         var gitElement = document.getElementById("gitaref");
         var data = snapshot.val();
         gitElement.value = data;
       });
   }
- /* function getcontent() {
-    firebase
-      .database()
-      .ref("COMMENT/comment")
-      .once("value", function(snapshot) {
-        var teacher_
-        = document.getElementById("teacher_comment");
-        var data = snapshot.val();
-         $("#comm")
-            .html(snapshot.val())
-            .css("color","black");
-        if (adminUID == firebase.auth().currentUser.uid) {
+  /* function getcontent() {
+     firebase
+       .database()
+       .ref("COMMENT/comment")
+       .once("value", function(snapshot) {
+         var teacher_
+         = document.getElementById("teacher_comment");
+         var data = snapshot.val();
+          $("#comm")
+             .html(snapshot.val())
+             .css("color","black");
+         if (adminUID == firebase.auth().currentUser.uid) {
+           
+         $("#comm").css("display", "none");
+         }
+       
           
-        $("#comm").css("display", "none");
-        }
-      
-         
-          
-        teacher_commentElement.value = data;
-      });
-  }*/
+           
+         teacher_commentElement.value = data;
+       });
+   }*/
 
   function checkID() {
     const adminUID = "IfPBdDg800QTIQHDdyP1yOsgMrv2";
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
       if (adminUID != firebase.auth().currentUser.uid) {
         $("#a").addClass("comment_btdisplay");
         $("#b").addClass("comment_btdisplay");
@@ -586,7 +600,7 @@ $("#clearproject").click(function() {
     var $messageField = $("#messageInput");
 
     var name;
-    $("#messageInput").keypress(function(e) {
+    $("#messageInput").keypress(function (e) {
       console.log("press");
       if (e.keyCode == 13 && $messageField.val().replace(/(^s*)|(s*$)/g, "").length != 0) {
         loginUser = firebase.auth().currentUser;
@@ -595,18 +609,22 @@ $("#clearproject").click(function() {
           .ref("users/" + loginUser.uid)
           .child("name")
           .once("value")
-          .then(function(snapshot) {
+          .then(function (snapshot) {
             name = snapshot.val();
             var message = $messageField.val();
-            dbref.push({ uid: loginUser.uid, name: name, text: message });
+            dbref.push({
+              uid: loginUser.uid,
+              name: name,
+              text: message
+            });
             $messageField.val("");
           });
 
-        
+
       }
     });
 
-    dbref.on("child_added", function(snapshot) {
+    dbref.on("child_added", function (snapshot) {
       loginUser = firebase.auth().currentUser;
       var data = snapshot.val();
       var username = data.name;
@@ -617,18 +635,18 @@ $("#clearproject").click(function() {
       if (id != loginUser.uid)
         $(".messesge").append(
           '<div class="row  p-2"><span class=" bg-light p-2 rounded text-dark"> <strong>' +
-            username +
-            "：</strong>" +
-            message +
-            "</span></div>"
+          username +
+          "：</strong>" +
+          message +
+          "</span></div>"
         );
-      else{
+      else {
         $(".messesge").append(
           '<div class="me justify-content-end row p-2"><span class="bg-primary p-2 rounded text-light">' +
-            message +
-            "</span></div>"
+          message +
+          "</span></div>"
         );
-  
+
       }
       $(".card-body").scrollTop($(".card-body")[0].scrollHeight);
     });
@@ -644,9 +662,9 @@ $("#clearproject").click(function() {
     dbref
       .child("users")
       .once("value")
-      .then(function(snapshot) {
+      .then(function (snapshot) {
         snapshot
-          .forEach(function(childSnapshot) {
+          .forEach(function (childSnapshot) {
             var number = childSnapshot.val().studentId;
             var name = childSnapshot.val().name;
             var arefVideo = childSnapshot.val().projectgoal.arefVideo;
@@ -654,7 +672,7 @@ $("#clearproject").click(function() {
             var comment = childSnapshot.val().projectgoal.comment;
             var git = childSnapshot.val().projectgoal.git;
             var projectName = childSnapshot.val().projectgoal.projectName;
-            
+
             if (
               class2 != "" &&
               arefVideo != "" &&
@@ -662,7 +680,7 @@ $("#clearproject").click(function() {
               projectName != "" &&
               git != ""
             ) {
-              
+
               var $row = $("#class-row");
               var $newBoad = $("<div></div>");
               $newBoad.addClass("shadow-lg");
@@ -764,7 +782,7 @@ $("#clearproject").click(function() {
               myDefaultWhiteList.button = [];
               var $stars = $(`.${number}`);
               // console.log($stars);
-              $stars.on("mouseover", function() {
+              $stars.on("mouseover", function () {
                 var index = $(this).attr("data-index");
                 markStarsAsActive(index);
               });
@@ -779,16 +797,16 @@ $("#clearproject").click(function() {
               function unmarkActive() {
                 $stars.removeClass("amber-text");
               }
-              $stars.on("click", function() {
+              $stars.on("click", function () {
                 $stars.popover("hide");
               });
               // Submit, you can add some extra custom code here
               // ex. to send the information to the server
-              $("#rateMe").on("click", "#voteSubmitButton", function() {
+              $("#rateMe").on("click", "#voteSubmitButton", function () {
                 $stars.popover("hide");
               });
               // Cancel, just close the popover
-              $("#rateMe").on("click", "#closePopoverButton", function() {
+              $("#rateMe").on("click", "#closePopoverButton", function () {
                 $stars.popover("hide");
               });
             }
@@ -796,7 +814,7 @@ $("#clearproject").click(function() {
             // })
             // .catch(function(error) {});
           })
-          .catch(function(error) {
+          .catch(function (error) {
             alert(error)
             console.log(error)
           });
