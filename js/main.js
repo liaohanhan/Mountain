@@ -13,7 +13,7 @@ $(document).ready(function() {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log("User is logined", user.uid);
-        window.location.href = "../html/progress.html"; //登入時改跳轉頁面
+        window.location.href = "../html/actionall.html"; //登入時改跳轉頁面
       } else {
         console.log("User is not logined yet.");
       }
@@ -580,6 +580,7 @@ $("#clearproject").click(function() {
               var $pic_data = $("<img>");
               $pic_data.addClass("rounded-circle");
               $pic_data.attr("src", "../img/int.jpg");
+
               $pic.append($pic_data);
               $newBoad.append($pic);
 

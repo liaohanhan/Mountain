@@ -40,10 +40,10 @@
       <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
       <a href="index.html" class="mt-5"><img class="navpic" src="../img/Logo.png" width="60%"></a>
       <a class="mt-5"><span id="id" class="idtext"></span></a>
-      <a href="./comment.html">開團總覽</a>
+      <a href="./actionall.html">開團總覽</a>
       <a href="./actiongoal.html">編輯開團</a>
-      <a href="./progress.html">團於山</a>
-      <a href="./all-team.html">裝備介紹</a>
+      <a href="#">團於山</a>
+      <a href="#">裝備介紹</a>
       <a href="../html/setting.html">設定</a>
       <a href="../html/index.html" id="logout"><img id="imgLogout" src="../img/logout.png" /></a>
     </div>
@@ -56,23 +56,23 @@
     <div id="main" class="vertical-center">
       <div class="container shadow-lg  mt-5">
         <form class="form-horizontal">
-          <div class="form pt-5 pb-5 pr-5 pl-5">
+          <div class="form pb-5 pr-5 pl-5">
             <div>
               <div class="pt-5 pb-5">
-                <h2>我要開團</h2>
+                <h2>編輯開團</h2>
               </div>
               <label>開團主題</label>
               <input type="text" class="form-control" name="projectName" id="projectName" style="margin-bottom: 10px"
                 ; />
               <label>開團日期</label>
-              <input type="text" class="form-control" name="arefVideo" id="arefVideo" style="margin-bottom: 10px" ; />
+              <input type="date" class="form-control" id="date" name="date" style="margin-bottom: 10px" ;>
               <label>開團人數</label>
               <input type="text" class="form-control" name="class" id="class" style="margin-bottom: 10px" ; />
               <label>聯絡方式</label>
+              <input type="text" class="form-control" name="gitaref" id="gitaref" />
+              <label>行程</label>
               <textarea class="form-control" rows="5" name="comment" id="comment" style="margin-bottom: 10px"
                 ;></textarea>
-              <label>行程</label>
-              <input type="text" class="form-control" name="gitaref" id="gitaref" />
               <br />
               <div style="display: flex;flex-direction: row;justify-content: flex-end; padding-bottom: 20px">
                 <button id="modifyproject" type="button" class="btn text-light"

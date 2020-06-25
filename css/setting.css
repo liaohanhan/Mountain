@@ -5,7 +5,10 @@ body {
   background-size: cover;
   font-family: "Noto Sans TC", sans-serif;
 }
-
+h2{
+  text-align: center;
+  
+}
 .change {
   height: 30rem;
 }

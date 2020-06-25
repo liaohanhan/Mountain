@@ -2,6 +2,7 @@
 body {
   font-family: "Noto Sans TC", sans-serif;
 }
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -15,13 +16,14 @@ body {
   text-align: center;
 }
 .sidenav a {
+  text-align: center;
   padding: 8px 8px 8px 8px;
   text-decoration: none;
   font-size: 20px;
   color: #fff;
   display: block;
   transition: 0.5s;
-  font-weight: 600;
+  font-weight: 500;
 }
 .sidenav a:hover {
   color: #0F816F;
@@ -33,6 +35,10 @@ body {
   font-size: 30px;
   margin-left: 50px;
 }
+.idtext{
+  font-size: 28px;
+}
+
 #main {
   transition: margin-left 0.5s;
   padding: 20px;
@@ -53,8 +59,11 @@ body {
   width: 100%;
 }
 @media screen and (max-height: 450px) {
-  .sidenav {
+  /* .sidenav {
     padding-top: 15px;
+  } */
+  .idtext{
+    font-size: 24px;
   }
   .sidenav a {
     font-size: 18px;
@@ -65,8 +74,11 @@ body {
   }
 }
 @media screen and (max-height: 999px) {
-  .sidenav {
+  /* .sidenav {
     padding-top: 15px;
+  } */
+  .idtext{
+    font-size: 26px;
   }
   .sidenav a {
     font-size: 20px;
@@ -165,5 +177,5 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   border-width: 2px;
-  background-color: #84D2C5;
+  background-color: #fff;
 }

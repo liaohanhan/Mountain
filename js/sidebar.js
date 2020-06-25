@@ -1,7 +1,7 @@
 $(document).ready(function () {
     change();
     function openNav() {
-        document.getElementById("mySidenav").style.width = "14rem";
+        document.getElementById("mySidenav").style.width = "15rem";
     }
 
     function closeNav() {
