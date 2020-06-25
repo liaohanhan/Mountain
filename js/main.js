@@ -157,62 +157,7 @@ $(document).ready(function() {
   });
   //-----------------------------------------------------------------------------------
 
-  //---------------------------------增加更新進度---------------------------------
- /* var uidd = 0;
-  var zz;
-  $("#submit").click(function() {
-    const time = document.getElementById("time").value;
-    var youtube = document.getElementById("youtube").value;
-    const content = document.getElementById("content").value;
-    youtube = youtube.replace("watch?v=", "embed/");
-    //console.log("User is logined", user.uid)
-    loginUser = firebase.auth().currentUser;
-    var progressRef = firebase.database().ref("users/" + loginUser.uid);
-    zz = loginUser.uid;
-    progressRef
-      .child("progress")
-      .once("value")
-      .then(function(snapshot) {
-        var num = snapshot.numChildren();
-        //console.log("There are " + num + " in progress");
-        //console.log("progress資料", snapshot.val());
-        progressRef
-          .child("progress")
-          .child((0 + Number(num)).toString())
-          .set({ time: time, youtube: youtube, content: content })
-          .then(function() {
-            alert("成功!");
-            document.body.scrollTop = document.body.scrollHeight;
-            document.documentElement.scrollTop =
-              document.documentElement.scrollHeight;
-            console.log(firebase.auth().currentUser.uid);
-            $("table").append(
-              '<tr><td data-th="更新內容">' +
-                content +
-                '</td><td data-th="花費時間">' +
-                time +
-                '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
-                youtube +
-                ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen ></iframe></div></td></tr>'
-            );
-
-            var progress = firebase
-              .database()
-              .ref("users/" + zz + "/" + "progress/");
-            progress.on("child_added", function(data) {
-              console.log("目前所有使用者：", data.val());
-            });
-          })
-          .catch(function(error) {
-            alert("失敗" + error);
-          });
-      })
-      .catch(function(error) {
-        alert("失敗" + error);
-      });
-  });*/
-  //-------------------------------------------------------------------
-
+ 
   //----------------如果網頁第一次要載入值 寫在這裡----------------------
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -253,7 +198,7 @@ $(document).ready(function() {
       });
   }*/
 
-  //取得學號
+  //取得名字
   function getId() {
     var loginUser = firebase.auth().currentUser;
     var progressRef = firebase.database().ref("users/" + loginUser.uid);
@@ -264,29 +209,6 @@ $(document).ready(function() {
         $("#id").html("你好！" + snapshot.val()+"！");
       });
   }
-  //取得頭貼
- /* function getPhoto() {
-    var loginUser = firebase.auth().currentUser;
-    var storageRef = firebase.storage().ref("users/" + loginUser.uid);
-    var pathReference = storageRef.child("image");
-    pathReference
-      .getDownloadURL()
-      .then(function(url) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url( " + url + ");";
-        if (location.pathname == "/webfinal/html/setting.html")
-          document.getElementById("upload_img").style.cssText =
-            "background-image:url( " + url + ");";
-      })
-      .catch(function(error) {
-        document.getElementById("photo").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
-
-        document.getElementById("upload_img").style.cssText =
-          "background-image:url(https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png);";
-      });
-  }*/
-  //----------------------------------------------------------------------
 
   //-----------------------更新密碼頁面--------------------------------------
   function settingrender(){
@@ -540,28 +462,6 @@ $("#clearproject").click(function() {
         gitElement.value = data;
       });
   }
- /* function getcontent() {
-    firebase
-      .database()
-      .ref("COMMENT/comment")
-      .once("value", function(snapshot) {
-        var teacher_
-        = document.getElementById("teacher_comment");
-        var data = snapshot.val();
-         $("#comm")
-            .html(snapshot.val())
-            .css("color","black");
-        if (adminUID == firebase.auth().currentUser.uid) {
-          
-        $("#comm").css("display", "none");
-        }
-      
-         
-          
-        teacher_commentElement.value = data;
-      });
-  }*/
-
   function checkID() {
     const adminUID = "IfPBdDg800QTIQHDdyP1yOsgMrv2";
     firebase.auth().onAuthStateChanged(function(user) {
@@ -680,7 +580,6 @@ $("#clearproject").click(function() {
               var $pic_data = $("<img>");
               $pic_data.addClass("rounded-circle");
               $pic_data.attr("src", "../img/int.jpg");
-              // $pic_data.src = "../img/int.jpg ";
               $pic.append($pic_data);
               $newBoad.append($pic);
 
