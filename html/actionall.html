@@ -43,24 +43,25 @@
   <body>
     <div id="bar" class="shadow-lg p-3 mb-5">Mountain</div>
     <div id="mySidenav" class="sidenav shadow-lg ">
-        <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
-        <a href="index.html" class="mt-5"><img class="navpic" src="../img/Logo.png" width="60%"></a>
-        <a class="mt-5"><span id="id" class="idtext"></span></a>
-        <a href="./actionall.html">開團總覽</a>
-        <a href="./actiongoal.html">編輯開團</a>
-        <a href="#">團於山</a>
-        <a href="#">裝備介紹</a>
-        <a href="../html/setting.html">設定</a>
-        <a href="../html/index.html" id="logout"><img id="imgLogout" src="../img/logout.png" /></a>
-  </div>
+      <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
+      <a href="index.html" class="mt-5"><img class="navpic" src="../img/Logo.png" width="60%"></a>
+      <a class="mt-5"><span id="id" class="idtext"></span></a>
+      <a href="./actionall.html">開團總覽</a>
+      <a href="./actiongoal.html">編輯開團</a>
+      <a href="#">團於山</a>
+      <a href="#">裝備介紹</a>
+      <a href="../html/setting.html">設定</a>
+      <a href="../html/index.html" id="logout"><img id="imgLogout" src="../img/logout.png" /></a>
+    </div>
     <button id="open" class="hamburger-menu">
+      <i class="fa fa-bars" aria-hidden="true"></i>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
     <!-- 開團 -->
     <div id="main">
-      <div class="container shadow-lg  mt-5">
+      <div class="container shadow-lg mt-5">
         <table class="rwd-table table mb-5">
           <tr>
             <th>開團主題</th>
@@ -71,12 +72,12 @@
           </tr>
         </table>
         <button id="add" class="btn btn-primary btn-lg shadow-lg" data-toggle="modal" data-target="#myModal">
-          增加更新日誌
+          
         </button>
         <img id="addFab" data-toggle="modal" data-target="#myModal" src="../img/addFab.png" />
       </div>
     </div>
-    
+
     <!-- 開團 -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">

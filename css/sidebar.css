@@ -136,7 +136,7 @@ body {
   border: none;
   display: inline-block;
 }
-.hamburger-menu .icon-bar {
+.hamburger-menu .fa-bars {
   background-color: #0F816F;
   display: block;
   height: 4px;

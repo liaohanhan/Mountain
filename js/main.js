@@ -88,7 +88,8 @@ $(document).ready(function() {
             phonenum: $("#phonenum").val()
           })
           .then(function() {
-            window.location.href = "../html/progress.html";
+            alert("註冊成功！");
+            window.location.href = "../html/actionall.html";
           });
       
            firebase
