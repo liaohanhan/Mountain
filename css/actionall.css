@@ -10,11 +10,11 @@ body {
     background: #fff;
     overflow: hidden;
     word-wrap: break-word;
-    table-layout: fixed
+    table-layout: fixed;
 }
 
 .rwd-table tr:nth-of-type(2n) {
-    background: #eee
+    background: #eee;
 }
 
 .rwd-table td,
