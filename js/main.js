@@ -8,7 +8,8 @@ $(document).ready(function () {
   var email;
   var password;
   var loginUser;
-resetweb()
+  resetweb()
+
   function isLogin() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -87,12 +88,12 @@ resetweb()
             name: $("#name").val(),
             phonenum: $("#phonenum").val()
           })
-          .then(function() {
+          .then(function () {
             alert("註冊成功！");
             window.location.href = "../html/actionall.html";
           });
 
-       
+
       })
       .catch(function (error) {
         console.error("寫入使用者資訊錯誤", error);
@@ -149,25 +150,25 @@ resetweb()
   });
   //-----------------------------------------------------------------------------------
 
- 
+
   //----------------如果網頁第一次要載入值 寫在這裡----------------------
-  function resetweb(){
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
-      console.log("in refresh");
-      //all_team();
-      console.log("after allteeam");
-      getId();
-      // getPhoto();
-      // chat();
-      settingrender()
-      // getprojectgoal();
-      // getcontent();
-      checkID();
-    }
-  });
-}
+  function resetweb() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // if (location.pathname == "/webfinal/html/progress.html") refreshProgress();
+        console.log("in refresh");
+        //all_team();
+        console.log("after allteeam");
+        getId();
+        // getPhoto();
+        // chat();
+        settingrender()
+        // getprojectgoal();
+        // getcontent();
+        checkID();
+      }
+    });
+  }
   //按下progress頁面更新資料
   /* function refreshProgress() {
      var loginUser = firebase.auth().currentUser;
@@ -235,7 +236,7 @@ resetweb()
   }
 
   function resetprofile() {
- 
+
     $("#newname,#newphonenum").removeAttr("disabled")
     $("#newpassword, #newpassword2,label").removeClass("hide")
 
@@ -261,44 +262,45 @@ resetweb()
         isSame = true;
       }
     });
-   
+
 
   }
-  $("#pass").on("click",function(){
+  $("#pass").on("click", function () {
     resetpassword()
   })
-  function resetpassword() {
-   
-      if (($("#newpassword").val()).trim() != "") {
-        if (isSame) {
-          var user = firebase.auth().currentUser;
-          var newpassword = document.getElementById("newpassword").value;
-          var profile ={
-            name:$("#newname").val(),
-            phonenum:$("#newphonenum").val()
-          }
-          user
-            .updatePassword(newpassword)
-            .then(function () {
-              console.log("Update successful.");
-              database.ref("users/"+ firebase.auth().currentUser.uid ).update(profile)
 
-              alert("更新成功！")
-              resetweb()
-              document.getElementById("newpassword").value = "";
-              document.getElementById("newpassword2").value = "";
-              $("#editsetting").removeClass("hide")
-              $("#pass").addClass("hide")
-              $("#newname,#newphonenum").attr("disabled",true)
-              $("#newpassword, #newpassword2,#newpasswordlable1,#newpasswordlable2").addClass("hide")
-            })
-            .catch(function (error) {
-              console.log(error);
-              // An error happened.
-            });
+  function resetpassword() {
+
+    if (($("#newpassword").val()).trim() != "") {
+      if (isSame) {
+        var user = firebase.auth().currentUser;
+        var newpassword = document.getElementById("newpassword").value;
+        var profile = {
+          name: $("#newname").val(),
+          phonenum: $("#newphonenum").val()
         }
+        user
+          .updatePassword(newpassword)
+          .then(function () {
+            console.log("Update successful.");
+            database.ref("users/" + firebase.auth().currentUser.uid).update(profile)
+
+            alert("更新成功！")
+            resetweb()
+            document.getElementById("newpassword").value = "";
+            document.getElementById("newpassword2").value = "";
+            $("#editsetting").removeClass("hide")
+            $("#pass").addClass("hide")
+            $("#newname,#newphonenum").attr("disabled", true)
+            $("#newpassword, #newpassword2,#newpasswordlable1,#newpasswordlable2").addClass("hide")
+          })
+          .catch(function (error) {
+            console.log(error);
+            // An error happened.
+          });
       }
-    
+    }
+
   }
   $("#connectphonenum").on("keyup", function () {
     var r = /^[0-9]*[1-9][0-9]*$/;
@@ -316,7 +318,7 @@ resetweb()
   });
   $("#class").on("keyup", function () {
     var r = /^[0-9]*[1-9][0-9]*$/;
-    if (!r.test($("#class").val()) ) {
+    if (!r.test($("#class").val())) {
       $(".rmessage")
         .html("請輸入正確的人數!")
         .css("color", "red");
@@ -328,7 +330,30 @@ resetweb()
         .css("color", "red");
     }
   });
+
+  function isempty(idname) {
+
+    if ($(`#${idname}`).val().trim() == "") {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  function checkmodifycolumn() {
+    if (isempty("projectName") || isempty("date") || isempty("connectphonenum") || isempty("class") || isempty("trip")) {
+      $("#modifyproject").attr("disabled", true)
+    } else {
+
+      $("#modifyproject").attr("disabled", false)
+    }
+  }
+  checkmodifycolumn()
+  $("#projectName,#date,#connectphonenum,#class,#trip").on("keyup", function () {
+    checkmodifycolumn()
+  })
   $("#modifyproject").click(function () {
+
 
     var nameElement = document.getElementById("projectName");
     var name = nameElement.value;
@@ -358,11 +383,11 @@ resetweb()
     tripElement.value = "";
     var connectphonenumElement = document.getElementById("connectphonenum");
     connectphonenumElement.value = "";
-   /* firebase
-      .database()
-      .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
-      .remove();
-    alert("已清除");*/
+    /* firebase
+       .database()
+       .ref("users/" + firebase.auth().currentUser.uid + "/projectgoal")
+       .remove();
+     alert("已清除");*/
   });
   $("#a").click(function () {
 
@@ -491,6 +516,7 @@ resetweb()
         gitElement.value = data;
       });
   }
+
   function checkID() {
     const adminUID = "IfPBdDg800QTIQHDdyP1yOsgMrv2";
     firebase.auth().onAuthStateChanged(function (user) {
