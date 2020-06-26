@@ -3,11 +3,13 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment:fixed;
     font-family: "Noto Sans TC", sans-serif;
   }
   h2{
-  text-align: center;
-}
+    color: #894C49;
+    text-align: center;
+  }
   .change {
     height: 30rem;
   }
