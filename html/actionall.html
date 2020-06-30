@@ -48,7 +48,7 @@
       <a class="mt-5"><span id="id" class="idtext"></span></a>
       <a href="./actionall.html">開團總覽</a>
       <a href="./actiongoal.html">我要開團</a>
-      <a href="#">團於山</a>
+      <a href="#">關於山</a>
       <a href="#">裝備介紹</a>
       <a href="../html/setting.html">個人資料</a>
       <a href="../html/index.html" id="logout"><img id="imgLogout" src="../img/logout.png" /></a>
@@ -58,52 +58,43 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <!-- 開團 -->
-    <div id="main">
-      <div class="container shadow-lg mt-5">
-        <table class="rwd-table table mb-5">
-          <tr>
-            <th>開團主題</th>
-            <th>開團日期</th>
-            <th>開團人數</th>
-            <th>聯絡方式</th>
-            <th>行程</th>
-          </tr>
-        </table>
-        <button id="add" class="btn btn-primary btn-lg shadow-lg" data-toggle="modal" data-target="#myModal">
-          
-        </button>
-        <img id="addFab" data-toggle="modal" data-target="#myModal" src="../img/addFab.png" />
-      </div>
-    </div>
-
-    <!-- 開團 -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">更新你的進度</h4>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="time">花費時間</label>
-                <input type="email" class="form-control" id="time" required />
-                <label for="youtube">操作影片</label>
-                <input class="form-control" id="youtube" />
-                <label for="content">更新內容</label>
-                <textarea class="form-control" id="content" rows="3"></textarea>
+    <div id="main" class="vertical-center">
+      <div class="container">
+        <div class="row mt-5" id="class-row">
+           <!-- 新增這塊 -->
+          <div class="col-sm-12 col-md-12 col-lg-12 p-5 mb-5 shadow-lg team " id="team0">
+            <div id="boad">
+              <div class="group-num" id="groupNum">
+                <h2 id="groupNumData">奇萊南華金色魔毯</h2>
               </div>
-            </form>
+              <div class="imformation" id="imformation">
+                <div class="member-child" id="member-child">
+                  <h5>主揪人</h5>
+                  <p id="student-num" >
+                    小巨人
+                  </p>
+                  <h5>聯絡電話</h5>
+                  <p id="student-name" >
+                    0912345678
+                  </p>
+                </div>
+                <h5>開團日期</h5>
+                <p id="project-name" >2020-07-02</p>
+                <h5>行程</h5>
+                <p id="demo2">
+                  D0:桃園出車→埔里市區民宿
+                  D1：民宿→登山口→天池山莊營地
+                  D2：天池山莊→奇萊南華→下山回桃園
+                  1.出發前晚氣象預報,看狀況是否出發
+                  2.視情況調整行程
+                  3.有慢性疾病請事先告知，隨團無醫生能急救
+                  4.此為自組團，可一起申請入園入山，主揪非領隊、嚮導、保姆之職,只是熱心發起活動
+                  5.謝絕王子病（郭董例外、公主病（顏值夠高🉑️）參加
+                  6.參與的夥伴們行進間互助合作及安全提醒</p>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit">
-              Submit
-            </button>
-          </div>
+          <!-- 新增結束 --> 
         </div>
       </div>
     </div>
