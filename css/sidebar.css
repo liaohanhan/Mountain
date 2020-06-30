@@ -2,7 +2,6 @@
 body {
   font-family: "Noto Sans TC", sans-serif;
 }
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -24,6 +23,7 @@ body {
   display: block;
   transition: 0.5s;
   font-weight: 500;
+  
 }
 .sidenav a:hover {
   color: #0F816F;
@@ -65,6 +65,9 @@ body {
   .idtext{
     font-size: 24px;
   }
+  .sidenav {
+    padding-top: 15px;
+  }
   .sidenav a {
     font-size: 18px;
   }
@@ -79,6 +82,9 @@ body {
   } */
   .idtext{
     font-size: 26px;
+  }
+  .sidenav {
+    padding-top: 15px;
   }
   .sidenav a {
     font-size: 20px;
@@ -177,5 +183,5 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   border-width: 2px;
-  background-color: #fff;
+  background-color: #84D2C5;
 }
