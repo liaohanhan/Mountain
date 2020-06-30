@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+
+    <!-- 引入 boostrap 函式庫 -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 引入 firebase 函式庫 -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/sidebar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="../css/setting.css" />
+    <!-- title -->
+    <title>裝備介紹</title>
+    <link href="../img/logoico.ico" type="img/x-ico" rel="icon">
+  </head>
+
+  <body>
+    <div id="bar" class="shadow-lg p-3 mb-5">裝備介紹</div>
+    <div id="mySidenav" class="sidenav shadow-lg">
+      <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
+      <a href="index.html" class="mb-5 mt-5" ><img class="navpic" src="../img/Logo.png" width="60%" ></a>
+      <a class="mt-5"><span id="id" class="idtext"></span></a>
+      <a href="./comment.html" >開團總覽</a>
+      <a href="./progress.html" >我要開團</a>
+      <a href="./projectgoal.html" >團於山</a>
+      <a href="./all-team.html" >裝備介紹</a>
+      <a href="../html/setting.html" >個人資料</a>
+      <a href="../html/index.html" id="logout"><img id="imgLogout" src="../img/logout.png"/></a>
+    </div>
+
+    <button id="open" class="hamburger-menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <div id="main" class="vertical-center">
+      <div class="container shadow-lg  mt-5">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="form mt-5"></div>
+                <div class="p-3 border-0">
+                  <h1 class="text-center font-weight-bolder">裝備介紹</h1>
+                </div>
+                <nav class="navbar navbar-expand-sm justify-content-center">
+                  <ul class="navbar-nav">
+                    <li class="nav-item px-5">
+                      <a class="nav-link" href="./all-team.html"><h2 style="color: brown;">基本觀念</h2></a>
+                    </li>
+                    <li class="nav-item px-5">
+                      <a class="nav-link" href="./all-team_1.html"><h2 style="color: brown;">背負系統</h2></a>
+                    </li>
+                    <li class="nav-item px-5">
+                      <a class="nav-link" href="./all-team_2.html"><h2 style="color: brown;">行進系統</h2></a>
+                    </li>
+                    <li class="nav-item px-5">
+                      <a class="nav-link" href="./all-team_3.html"><h2 style="color: brown;">服裝系統</h2></a>
+                    </li>
+                  </ul>
+              </nav>
+                <hr>
+                <h3 class="font-weight-bolder pl-5" style="color: green;">服裝系統</h3>
+                <h4 class="p-5">
+                    「上山要怎麼穿？」也是新手最常會問的問題之一，尤其是高山行程，日夜溫差動輒 10-15 度以上，白天行走時可能有 20 幾度、晚上在營地卻不到 10 度，衣服的選擇與搭配就更加重要。其實，只要記住「洋蔥式穿法」的原則，上山的衣物準備並沒有那麼複雜！
+                    <br><br>
+                    洋蔥式穿法，就是運用多層次穿搭的概念，讓衣服可以有更多元的組合。試想，今天如果只帶了一件超厚的外套，在穿著太熱、脫掉又太冷的狀況下，就無法達到舒適、保暖的目的；但如果今天帶上山的是兩件相對比較薄的外套，就可以做更彈性的調整。
+                    <br><br>
+                    建議大家在準備上山的衣服時，可以這樣搭配：
+                    <br>
+                    1) 底層：排汗衣、排汗內衣，可以快速帶走皮膚上的水氣，保持身體乾燥溫暖。
+                    <br>
+                    2) 中層：具備吸濕排汗功能的保暖衣或是化纖外套，可以持續排出底層導出的水分，並防止不必要的熱量流失。
+                    <br>
+                    3) 外層：可防風、防水的外套（或是雨衣），避免風寒效應與水寒效應。
+                    <br><br>
+                    特別要提醒的是，上山要避免穿棉質的衣物、也不該穿牛仔褲，因為濕掉後無法保暖，又很難被體溫蒸乾，在流汗後很容易讓身體一直處於潮濕的狀態下，讓失溫的風險大增。
+                    <br><br>
+                </h4>
+                <img src="../img/al_team_img_5.png" class="rounded mx-auto d-block py-2" style="width:30%">
+                <h4 class="p-5">
+                  <br>
+                  此外，衣服建議「穿一帶一」，也就是除了身上穿的一套以外，另外準備一套放在背包（並做好防水），如果不小心衣服濕掉可以迅速換下，或是到山屋時換上另一套衣服，讓身體保持乾爽。
+                  <br><br>
+                  【排汗衣】【排汗內衣褲】（底層）
+                  <br>
+                  目前以聚酯纖維、羊毛為兩大主流材質。聚酯纖維的排汗效果較好，因此如果是夏天的行程、或是比較怕熱，建議選擇聚酯纖維的材質。羊毛的強項則是抗菌抑臭，而且就算濕掉也還是有保暖的效果，如果天氣較冷、或是擔心多天行程衣服會臭，就可以選擇羊毛的材質。此外，現在也有許多大廠有出混合的材質，如：羊毛混天絲、或是正面是羊毛、背面是聚酯纖維，選擇更多元。
+                  <br><br>
+                  【禦寒衣物】（中層）
+                  <br>
+                  中層（保暖層）的選擇，會依據每個人需求（有多怕冷）及季節而不同。可以分為「行進用」（中厚度的羊毛衣或風衣外套）跟「營地用」（有填充的外套、較厚的外套）兩種類型；比較厚的排汗衣，也可以拿來做保暖層。如果比較怕冷的人，禦寒衣物可能就不只準備一件，有可能是中厚度的羊毛衣＋化纖外套來做搭配。
+                  <br><br>
+                  【防風外套】 【兩截式雨衣】（外層）
+                  <br>
+                  屬於外層的部分，有時候一件就同時具備防風、防水的功能，就不用特別分開準備。特別要提醒的是，臺灣因氣候潮濕多雨，「防水」的功能是非常重要的，因此不管是哪種行程，防風防水的外套都是必備的裝備。（注意！「防水」跟「防潑水」是不同的概念，外層務必要選擇有「防水」功能的裝備。）
+                  <br><br>
+                  挑選雨衣褲時，可以留意以下幾點：1) 口袋的開口位置是否會被登山包的腰帶卡住 2) 腋下是否有拉鍊可透氣 3) 帽兜的大小、以及是否有束帶 4) 雨褲側邊是否有拉鍊 5) 雨褲腰間是否有束帶（以免被登山包擠壓導致滑落）6) 褲管是否會太短（抬腿的時候水可能會流到鞋子裡）。
+                  <br><br>
+                  以下是洋蔥式穿法的示範，看出來了嗎？利用多層次的穿法，可以更彈性地調整衣著，讓身體不管是行進間或休息時，都可以是最舒適的狀態。                  
+                </h4>
+                <img src="../img/al_team_img_6.png" class="rounded mx-auto d-block py-2" style="width:30%">
+                <h4 class="p-5">
+                    【排汗褲】【保暖褲】
+                    <br>
+                    具備排汗、快乾的長褲、或是短褲＋內搭褲，都是 OK 的穿法，近年來也流行壓力褲 / 壓縮褲，唯要注意晚上休息時要換掉，讓腿部肌肉放鬆。如果比較怕冷，可以另外準備一件晚上在營地或山屋穿的保暖褲，可以睡的更好。
+                    <br><br>
+                    【保暖帽】
+                    <br>
+                    頭部是全身微血管密度較高的地方，也是熱能容易散發的地方，因此頭部的保暖——尤其是在高山上——是非常重要的。保暖帽必須要能覆蓋住三個重點——兩側的太陽穴以及後腦杓，才能真正達到效果。另外，許多人容易忽略的是帽子是否有做防風效果，如果沒有，可以用雨衣的帽兜來達到防風的目的。
+                    <br><br>
+                    【防曬帽】
+                    <br>
+                    高山上的紫外線比平地強，防曬帽是必備的裝備。可以視個人需求選擇圓盤帽或鴨舌帽。
+                    <br><br>
+                    【頭巾】
+                    <br>
+                    頭巾是在山上非常萬用的一項裝備，可以用於 1) 脖子與臉部的保暖與防曬 2) 遮蔽口鼻，避免直接吸入寒冷的空氣 3) 擦汗 4) 包紮 5) 將衣服塞進頭巾，就可以變身為枕頭 6) 女生可以用來綁頭髮、或當作髮帶使用。體積小、重量輕，非常推薦攜帶。
+                    <br><br>
+                    【手套】
+                    <br>
+                    手套也是上山必備的裝備，主要可以分為兩種用途：1) 耐磨 2) 保暖，前者主要是用於拉繩或通過一些崎嶇地形時，避免手部受傷，可以選用較薄、耐磨材質的手套，靈活度較高；厚者則是用於手部的保暖，通常最好具備「防風＋保暖」的機能。
+                    <br><br>
+                </h4>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

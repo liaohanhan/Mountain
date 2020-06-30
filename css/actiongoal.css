@@ -1,0 +1,88 @@
+body {
+    background-image: url(../img/BGinside.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  h2{
+    color: #894C49;
+    text-align: center;
+  }
+  .change {
+    height: 30rem;
+  }
+  #mySidenav{
+    background-color: #84D2C5;
+  }
+  
+  #pass,#editsetting {
+    border-radius: 5rem;
+    float: right;
+  }
+  .show:disabled{
+    border: none;
+    background-color: #f5f5f5;
+  }
+  .show{
+    display:""; 
+  }
+  .hide{
+    display: none;
+  }
+  .navpic{
+    justify-content: center;
+  }
+  .navbartext{
+    color: #fff;
+  }
+  .navbartext:hover{
+    color:#0F816F;
+  }
+  .vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .mountain{
+    width: 100%;
+  }
+  .container{
+    background-color: #fff;
+    border-radius: 1em;
+  }
+  button{
+    color: #fff;
+    background: -webkit-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: -o-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: -moz-linear-gradient(90deg,#0F816F,#33BCBE);
+    background: linear-gradient(90deg,#0F816F,#33BCBE);
+  }
+  button:hover{
+    opacity:0.7;
+  }
+  #file {
+    margin-top: -4rem;
+    padding: 7rem;
+  }
+  #confirm {
+    border-radius: 5rem;
+  }
+  #editsetting,#pass{
+    margin-bottom:3em;
+  }
+  @media screen and (max-width: 1024px) {
+    #file {
+      margin-top: -1rem;
+      padding: 1rem;
+    }
+    @media screen and (max-width: 600px) and (max-height: 400px) {
+      #file {
+        margin-top: -1rem;
+        padding: 5rem;
+      }
+    }
+  }
+  
