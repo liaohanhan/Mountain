@@ -1,0 +1,62 @@
+body {
+    background-image: url(../img/BGinside.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    font-family: "Noto Sans TC", sans-serif;
+}
+.vertical-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+h2{
+    color: #894C49;
+    text-align: center;
+  }
+h5{
+    color: #0F816F;
+}
+.team{
+    background-color: #fff;
+    border-radius: 1rem;
+}
+.title{
+    height: 10rem;
+}
+
+@media (min-width:480px) {
+    
+}
+
+@media (max-width:479px) {
+
+
+#add {
+    position: fixed;
+    bottom: 50px;
+    right: 50px
+}
+
+#addFab {
+    position: fixed;
+    bottom: 10px;
+    right: 10px
+}
+
+.btn {
+    border-radius: 5rem
+}
+}
+@media screen and (max-width:1024px) {
+    #add {
+        visibility: hidden
+    }
+}
+
+@media screen and (min-width:1024px) {
+    #addFab {
+        visibility: hidden
+    }
+}
