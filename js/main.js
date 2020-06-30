@@ -350,7 +350,7 @@ $(document).ready(function () {
   }
   checkmodifycolumn()
   $("#projectName,#date,#connectphonenum,#class,#trip").on("keyup", function () {
-    checkmodifycolumn()
+  checkmodifycolumn()
   })
   $("#modifyproject").click(function () {
 
