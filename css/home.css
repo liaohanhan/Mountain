@@ -178,10 +178,13 @@ nav {
     height: 400px;
   }
   .details h1 {
-    font-size: 38px;
+    font-size: 28px;
   }
   .details h2 {
-    font-size: 28px;
+    font-size: 18px;
+  }
+  .details p {
+    font-size: 14px;
   }
 }
 
@@ -222,4 +225,32 @@ nav {
 }
 .menu {
   cursor: pointer;
+}
+@media (max-width: 480px) {
+  .page {
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 1fr 0.5fr;
+    align-items: center;
+  }
+  .hero {
+    grid-column: 2/3;
+    height: auto;
+  }
+  .hero img {
+    margin-top: 2rem;
+    height: 350px;
+  }
+  
+.AboutEquipment{
+  position: absolute;
+  top:10%;
+  bottom: 10%;
+  left: 0%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+h1{
+  padding-top: 1rem;
+}
 }
