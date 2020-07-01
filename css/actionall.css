@@ -60,3 +60,58 @@ h5{
         visibility: hidden
     }
 }
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .section {
+    height: 100%;
+    width: calc(100% / 5);
+    float: left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .section:nth-child(1) {
+    background: #262626;
+  }
+  .section:nth-child(2) {
+    background: #22a7f0;
+  }
+  .section:nth-child(3) {
+    background: #f9690e;
+  }
+  .section:nth-child(4) {
+    background: #9b59b6;
+  }
+  .section:nth-child(5) {
+    background: #03c9a9;
+  }
+  .sections {
+    width: 500%;
+    height: 100%;
+  }
+  .sectionTitle {
+    font-size: 30px;
+    color: #fff;
+  }
