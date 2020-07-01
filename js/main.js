@@ -343,7 +343,6 @@ resetweb()
       $("#modifyproject").attr("disabled", false)
     }
   }
-  checkmodifycolumn()
   $("#projectName,#date,#connectphonenum,#class,#trip").on("keyup", function () {
   checkmodifycolumn()
   })
