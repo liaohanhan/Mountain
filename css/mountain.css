@@ -17,7 +17,9 @@ body {
   background: linear-gradient(to left, #A5BF36, #BBD354);
   z-index: -1;
 }
-
+img{
+  border-radius: 1rem;
+}
 
 nav {
   display: grid;
