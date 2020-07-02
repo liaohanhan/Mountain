@@ -68,7 +68,7 @@ $(document).ready(function () {
         isLogin();
       });
 
-      //---------------註冊帳號---------------------------
+      //---------------------------註冊帳號---------------------------
       $("#register").click(function () {
         email = document.getElementById("rmail").value;
         password = document.getElementById("rpassword").value;
@@ -164,29 +164,6 @@ $(document).ready(function () {
           }
         });
       }
-      //按下progress頁面更新資料
-      /* function refreshProgress() {
-         var loginUser = firebase.auth().currentUser;
-         var progressRef = firebase.database().ref("users/" + loginUser.uid);
-         progressRef
-           .child("progress")
-           .once("value")
-           .then(function(snapshot) {
-             snapshot.forEach(function(childSnapshot) {
-               $("table").append(
-                 '<tr><td data-th="更新內容">' +
-                   childSnapshot.val().content +
-                   '</td><td data-th="花費時間">' +
-                   childSnapshot.val().time +
-                   '</td><td data-th="操作影片"><div class="video-container"><iframe width="200" height="130"src=' +
-                   childSnapshot.val().youtube +
-                   ' frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></td></tr>'
-               );
-               console.log(childSnapshot.val());
-             });
-           });
-       }*/
-
       //取得名字
       function getId() {
         var loginUser = firebase.auth().currentUser;
@@ -202,7 +179,7 @@ $(document).ready(function () {
           });
       }
 
-      //-----------------------個人資料--------------------------------------
+      //----------------------------------------個人資料--------------------------------------
       var isSame = false;
       /*進入畫面抓值*/
       function settingrender() {
@@ -408,7 +385,7 @@ $(document).ready(function () {
       $("#clearproject").click(function () {
         clear()
       });
-      //----------------------------------開團總覽-----------------------------------
+      //----------------------------------開團總覽-----------------------------------------------
       function projecerender() {
         var database = firebase.database()
         var project
