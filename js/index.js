@@ -1,6 +1,6 @@
 const intro = document.querySelector(".intro");
-const video = intro.querySelector("video");
 const text = intro.querySelector("h1");
+const video = intro.querySelector("video");
 //END SECTION
 const section = document.querySelector("section");
 const end = intro.querySelector("h1");

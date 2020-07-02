@@ -29,7 +29,7 @@ body {
 
 .intro h2 {
   position: absolute;
-  top: 10em;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 60px;
@@ -47,13 +47,23 @@ section h1 {
   font-size: 80px;
 }
 
-@media (max-width: 600px) {
-  h1 {
-  font-size: 20px;
-    }
-    h2{
-      font-size: 18px;
-    }
+@media (max-width:480px) {
+  .intro h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+  } 
+  .intro h2 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: white;
+  }
   }
 
   
