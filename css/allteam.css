@@ -1,0 +1,19 @@
+body {
+    background-image: url(../img/BGinside.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  h2{
+    color: #894C49;
+    text-align: center;
+  }
+.container{
+    background-color: #fff;
+    border-radius: 1em;
+  }
+  h5{
+    color: #0F816F;
+}
