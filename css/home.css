@@ -174,6 +174,7 @@ nav {
 }
 
 @media (max-width: 768px) {
+
   .hero img {
     height: 400px;
   }
@@ -226,31 +227,65 @@ nav {
 .menu {
   cursor: pointer;
 }
+
 @media (max-width: 480px) {
   .page {
     grid-template-columns: 5% 1fr 5%;
     grid-template-rows: 1fr 0.5fr;
     align-items: center;
   }
-  .hero {
-    grid-column: 2/3;
-    height: auto;
-  }
   .hero img {
-    margin-top: 2rem;
-    height: 350px;
+    height: 300px;
   }
-  
-.AboutEquipment{
+  .hero a {
+    display: flex;
+  }
+  .details h1 {
+    font-size: 28px;
+  }
+  .details h2 {
+    font-size: 18px;
+  }
+  .details p {
+    font-size: 14px;
+  }
+}
+
+.nav-open {
   position: absolute;
-  top:10%;
-  bottom: 10%;
-  left: 0%;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  opacity: 0;
-  pointer-events: none;
+  height: 50vh;
+  background: white;
+  z-index: 1;
+  color: black;
+  display: grid;
+  grid-template-columns: 5% 1fr 1fr 5%;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-100%);
 }
-h1{
-  padding-top: 1rem;
+
+.contact {
+  grid-column: 2/3;
 }
+.nav-open h3 {
+  font-size: 28px;
+  padding-bottom: 40px;
+}
+.nav-open p {
+  font-size: 18px;
+}
+.social-links img {
+  padding: 0px 20px;
+}
+
+.logo,
+.menu {
+  z-index: 2;
+}
+.menu {
+  cursor: pointer;
 }
