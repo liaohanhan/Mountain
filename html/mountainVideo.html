@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+  <!-- 引入 boostrap 函式庫 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <!-- 引入 bootstrap Validator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+  <!-- 引入 firebase 函式庫 -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+  <!--這是主要js 要引入-->
+  <script type="text/javascript" src="../js/sidebar.js"></script>
+  <!--這是導覽列要引入-->
+  <link rel="stylesheet" type="text/css" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../css/mountain.css" />
+  <link rel="stylesheet" href="../css/actionall.css" />
+
+  <title>Mountain-關於山</title>
+</head>
+
+<body>
+
+  <div id="bar" class="shadow-lg p-3 mb-5">Mountain</div>
+  <div id="mySidenav" class="sidenav shadow-lg">
+    <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
+    <a href="../html/home.html" class="mt-5"><img class="navpic" src="../img/Logo.png" width="60%"></a>
+    <a class="mt-5"><span id="id" class="idtext"></span></a>
+    <a href="./actionall.html">開團總覽</a>
+    <a href="./actiongoal.html">我要開團</a>
+    <a href="./mountain.html">關於山</a>
+    <a href="./all-team.html">裝備介紹</a>
+    <a href="../html/setting.html">個人資料</a>
+    <a href="../index.html" id="logout"><img id="imgLogout" src="../img/logout.png" /></a>
+  </div>
+  <button id="open" class="hamburger-menu">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <div id="main" class="vertical-center">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="team   shadow-lg pl-5 pr-5 pb-5">
+            <div>
+              <div class="pt-5">
+                <h2 class="pb-5">關於山</h2>
+                為了幫助剛踏入戶外圈的新手更了解登山知識，卡波特別針對幾項常見的登山名詞做認識與整理，以後如果被問到相關問題，你就可以很精準地回答答案嘍！
+                </br>
+                <div class="embed-responsive embed-responsive-16by9 mt-5 mb-5">
+                  <iframe class="embed-responsive-item" src="../img/web 2.mp4" allowfullscreen></iframe>
+                </div>
+                <h5>郊山</h5>
+                <p>
+                  郊山的定義，有泛指1,000m-1,500m及1,500以下兩種說法，我覺得其實沒有太大差別。最主要的分辨之處應該在於郊山的交通位置在主要縣市附近，以及林相不會過於複雜，通常可以單日來回。也因為郊山難易度較低，行政院體育委員會曾於92年嚴選100座特色郊山作為小百岳，希望可以推動臺灣山林運動風氣。
+                </p>
+                <h5>小百岳</h5>
+                <p>
+                  臺灣小百岳是民國92年由行政院體育委員會所推動的。為了鼓勵臺灣人走出戶外，享受大自然的美好，從臺灣各縣市鄰近郊區的登山路線，挑選出100座具代表性的「郊山」，命名為小百岳。相比臺灣百岳的海拔高度、難易度及交通易達度，小百岳平易近人許多，也是老少咸宜的登山路線。
+                </p>
+                <h5>中級山</h5>
+                <p>
+                  中級山的定義，泛指海拔1,000m-3,000m或1,500m-3,000m，介於郊山與百岳之間的山。中級山由於林相較多元複雜，路線天數從1天來回到3天縱走都有。時常也會有山友開玩笑說「中級山有時候還比百岳還要難爬呢！」
+                </p>
+                <h5>高山</h5>
+                <p>
+                  高山的定義，泛指海拔3,000m以上的高山。臺灣高山約有258座，詳細載明可參考高雄市百岳登山協會之紀錄。
+                </p>
+                <h5>百岳</h5>
+                <p>
+                  百岳不是一座山，而是從台灣海拔3,000m以上的高山中，挑選出100座的高山做為百岳。但這100座高山也不是隨便挑的，而是有一套邏輯：1.標高一萬英尺以上、2.在地圖上註有山名、3.有三角點者，為優先選錄標準。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

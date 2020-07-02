@@ -5,6 +5,7 @@ function init() {
     `radial-gradient(#9DBA42, #687F05)`,
     `radial-gradient(#D09C2A, #BA741E)`,
     `radial-gradient(#84D2C5, #84D2C5)`,
+    `radial-gradient(#9DBA42, #687F05)`,
   ];
 
   let current = 0;
@@ -33,7 +34,7 @@ function init() {
     const currentLeft = currentPage.querySelector(".hero .pic-left");
     const currentRight = currentPage.querySelector(".hero .pic-right");
     const nextText = nextPage.querySelector(".details");
-    const portofolio = document.querySelector(".portofolio");
+    const M = document.querySelector(".M");
 
     const tl = new TimelineMax({
       onStart: function() {
@@ -50,7 +51,7 @@ function init() {
 
     tl.fromTo(currentLeft, 0.3, { y: "-10%" }, { y: "-100%" })
       .fromTo(currentRight, 0.3, { y: "10%" }, { y: "-100%" }, "-=0.2")
-      .to(portofolio, 0.3, { backgroundImage: backgrounds[pageNumber] })
+      .to(M, 0.3, { backgroundImage: backgrounds[pageNumber] })
       .fromTo(
         currentPage,
         0.3,
