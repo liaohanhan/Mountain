@@ -59,7 +59,7 @@ $(document).ready(function () {
           .then(
             function () {
               console.log("User sign out!");
-              window.location.href = "../html/index.html";
+              window.location.href = "../index.html";
             },
             function (error) {
               console.log("User sign out error!");
