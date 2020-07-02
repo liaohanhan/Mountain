@@ -361,7 +361,7 @@ $(document).ready(function () {
             host: loginname,
             projectName: name,
             peoplenum: cls,
-            trip: trip,
+            trip: trip.replace(/\n/g,"</br>"),
             date:date,
             connectphonenum: connectphonenum
           });
